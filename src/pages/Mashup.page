@@ -1,0 +1,143 @@
+<apex:page controller="MashupController" action="{!login}" showHeader="false" sidebar="false" standardStylesheets="false" cache="false">
+    <apex:stylesheet value="{!$Resource.style}"/>
+    <head>
+        <title>Friend nearby users</title> 
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    </head>
+    <h1>Nearby Users</h1>
+    <p id="userList">Retrieving nearby users...<img src="{!$Resource.ajax}" width="16" height="11"/></p>
+    <p><a href='#' id="searchWider"></a></p>
+    <c:FacebookLike />
+    <h3><a href='#' id="about">Learn more about this app</a></h3>
+    <p id="abouttext">
+        This app, running on <a href="http://force.com/">Force.com</a>, uses 
+        the Force.com toolkits for Facebook and SimpleGeo to show a list of 
+        other recent users of the app, ordered by distance. 
+        You can click users to see their profile, or use the button to add 
+        them as friends.
+    </p>
+    <script src="{!$Resource.gears_init}"></script>
+    <script src="{!$Resource.geo}"></script>
+    <script src="{!$Resource.jquery}"></script>
+    <script src="{!$Resource.html_sanitizer}"></script>
+    <script type="text/javascript">
+    var $j = jQuery.noConflict();
+    var radius = {!radius};
+    
+    function debug(str) {
+        if (window.console && console.log) {
+            console.log(str);
+        }
+    }
+
+    // Build a table of nearby users - non-friends are given a link
+    // to add them as friends
+    function showNearbyUsers(p){
+        // Circumference of the earth is a little more than 40000km; no
+        // point in searching with a radius of > 21000km
+        if ( radius < 21000 ) {
+            $j('#searchWider').html('Search with radius '+
+							  (radius * 10).toString()+'km');
+        } else {
+            $j('#searchWider').remove();
+        }
+        // Detail on the current FB user
+        var me = {!facebookUser};
+        MashupController.getNearbyUsers(me.id, me.name, p.coords.latitude, 
+        p.coords.longitude, radius, function(result, event) {
+            if (event.status) {
+                // List of friends of the current FB user
+                var friends = {!facebookFriends};
+                // Build object of friend ids to match against
+                var friendIds = {};
+                for ( var i in friends.data ) {
+                    friendIds[friends.data[i].id] = friends.data[i].name;
+                }
+                // Parse input from remote function - unescape HTML since VF 
+                // escapes quotes and such
+                var nearby = JSON.parse(html.unescapeEntities(result));
+                // Now make a table of pics, names, links to profiles and
+                // 'Add friend' buttons for other users who are not yet
+                // friends 
+                var oldest = Math.round((new Date()).getTime() / 1000) - 
+										{!presenceTimeout};
+                var output = '<table border="0">';
+                var users = 0;
+                for (var i in nearby.features) {
+                    // Only show users who have 'checked in' recently
+                    if (nearby.features[i].created > oldest) {
+                        var id = nearby.features[i].id;
+                        if (id && id !== me.id) {
+                            users++;
+                            output += '<tr><td>';
+                            if ( nearby.features[i].distance < 1000 ) {
+                               output += Math.round(nearby.features[i].distance).toString() + ' m';
+                            } else {
+                               output += Math.round(nearby.features[i].distance / 1000).toString() + ' km';
+                            }
+                            output += '</td><td><a href="http://www.facebook.com/people/@/'+id+'">'+
+                                '<img src="https://graph.facebook.com/'+id+
+                                '/picture" width="50" height="50" /></a></td>'+
+                                '<td style="vertical-align:middle">'+
+																'<a href="http://www.facebook.com/people/@/'+id+'">'+
+																nearby.features[i].properties.name+'</a></td><td>';
+                            if (!friendIds[id]) {                        
+                                output += '<a href="https://www.facebook.com/dialog/friends/?id='+
+                                nearby.features[i].id+'&app_id={!appId}&redirect_uri={!$CurrentPage.URL}">'+
+                                '<img src="{!$Resource.addfriend}" width="93" height="23"/></a>';
+                            }
+                            output += '</td></tr>';
+                        }
+                    }
+                }
+                output += '</table><p>';
+                switch (users) {
+                case 0:
+                    output += 'No users';
+                    break;
+                case 1:
+                    output += '1 user';
+                    break;
+                default:
+                    output += users.toString() + ' users';
+                    break;
+                }
+                output += ' within '+radius+'km</p>';
+                $j('#userList').html(output);
+            } else if (event.type === 'exception') {    
+                debug(event.message + '\n' + JSON.stringify(event));
+            } else {
+                debug(event.message);
+            } 
+        });
+    }
+    
+    function getLocationAndShowUsers() {
+        var locationFromIP = {!locationFromIP};
+        if (geo_position_js.init()) {
+            geo_position_js.getCurrentPosition(showNearbyUsers, function(){
+                showNearbyUsers({"coords":locationFromIP});
+            });
+        } else {
+            showNearbyUsers({"coords":locationFromIP});
+        }
+        // Update every minute
+        window.setTimeout(getLocationAndShowUsers, {!refreshTimeout}*1000);
+    }
+  
+    $j(document).ready(function(){
+        $j('#abouttext').hide();  
+        $j('#about').toggle(function(){
+            $j('#abouttext').show();
+        }, function() {
+            $j('#abouttext').hide();        
+        });
+        $j('#searchWider').click(function(){
+            radius *= 10;
+            $j('#userList').html('Retrieving nearby users...<img src="{!$Resource.ajax}" width="16" height="11"/>');
+            getLocationAndShowUsers();
+        });
+        getLocationAndShowUsers();
+    });
+    </script>
+</apex:page>

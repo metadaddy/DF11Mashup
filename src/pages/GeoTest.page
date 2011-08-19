@@ -1,0 +1,22 @@
+<apex:page >
+    <script src="{!$Resource.gears_init}"></script>
+    <script src="{!$Resource.geo}"></script>
+    <script src="{!$Resource.jquery}"></script>
+    <script>
+    var $j = jQuery.noConflict();
+    
+    if(geo_position_js.init()){
+        geo_position_js.getCurrentPosition(function(position){
+            $j("#output").html('Success: <br/><pre>'+
+                JSON.stringify(position, null, '    '));
+        }, function(error){
+            $j("#output").html('Error: <br/><pre>'+
+                JSON.stringify(error, null, '    '));
+        });
+    } else {
+        $j("#output").html('Geo-location not available');
+    }
+    </script>
+    <h1>Geolocation Test</h1>
+    <p id="output"></p>
+</apex:page>
