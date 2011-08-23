@@ -16,6 +16,7 @@
         You can click users to see their profile, or use the button to add 
         them as friends.
     </p>
+    <h3><a href="https://www.facebook.com/forcedotcom">Developer Force on Facebook</a></h3>
     <script src="{!$Resource.gears_init}"></script>
     <script src="{!$Resource.geo}"></script>
     <script src="{!$Resource.jquery}"></script>
