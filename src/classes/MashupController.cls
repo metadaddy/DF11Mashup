@@ -5,7 +5,7 @@
 global with sharing class MashupController extends FacebookLoginController {
     static SimpleGeo client = new SimpleGeo();
     static String startRadius = '5';
-    static String presence = '300';
+    static String presence = '3600'; // One hour
     static String refresh = '30';
     
     public static String getRadius() {
