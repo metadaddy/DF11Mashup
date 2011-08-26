@@ -23,9 +23,7 @@ Instructions
 2. Create a new Force.com project in the [Force.com IDE](http://wiki.developerforce.com/index.php/Force.com_IDE) using your new org's credentials. In the 'Choose Initial Project Contents' dialog, select 'Selected metadata components', hit 'Choose...' and select ALL of the components in the next page. This will give you a complete project directory tree.
 
 3. Copy all static resources from DF11Mashup to the staticresources project sub-directory. For example:
-```
-cp DF11Mashup/src/staticresources/* ~/Documents/workspace/Mashup/src/staticresources
-```
+        cp DF11Mashup/src/staticresources/* ~/Documents/workspace/Mashup/src/staticresources
 You will need to adjust paths according to the location of your Eclipse workspace.
 
 4. Copy the Geolocation test page:
