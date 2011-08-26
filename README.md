@@ -73,11 +73,11 @@ Note that there are no slashes on the end of those directory names. If you add t
 
 21. Go to Setup | App Setup | Develop | Apex Classes | Schedule Apex and add FacebookHousekeeping - set it to run at midnight every night. This scheduled Apex job will remove expired session records from the FacebookSession__c object.
 
-22. Go to https://developers.facebook.com/apps and create a new Facebook app. Under 'Website', set Site URL to your site's URL - for me it was http://fbtest-developer-edition.na12.force.com/
+22. Go to https://developers.facebook.com/apps and create a new Facebook app. Under 'Website', set Site URL to your site's URL - for me it was http://sgtest-developer-edition.na12.force.com/
 
 23. Back in your DE org, click the 'Facebook Apps' tab, Click 'New' and enter the following data:
 * FacebookApp Name: Mashup
 * clientID: App ID from your app's settings in Facebook
 * clientSecret: App Secret from your app's settings in Facebook
 
-23. Go to your site URL (e.g. http://fbtest-developer-edition.na12.force.com/) and you should be prompted to authorize your new app. Do so and you should see a sample page showing your Facebook user info, profile picture, 'Like' button etc. Change the URL to e.g. http://fbtest-developer-edition.na12.force.com/SimpleMashup and you should see a list of nearby users. It will likely have a single entry. Now go to e.g. http://fbtest-developer-edition.na12.force.com/Mashup and you should see the full 'Nearby Users' UI, with (probably) an empty list of users, since it does not list you. Persuade a friend to go to that page and they should see you listed.
+23. Go to your site URL (e.g. http://sgtest-developer-edition.na12.force.com/) and you should be prompted to authorize your new app. Do so and you should see a sample page showing your Facebook user info, profile picture, 'Like' button etc. Change the URL to e.g. http://sgtest-developer-edition.na12.force.com/SimpleMashup and you should see a list of nearby users. It will likely have a single entry. Now go to e.g. http://sgtest-developer-edition.na12.force.com/Mashup and you should see the full 'Nearby Users' UI, with (probably) an empty list of users, since it does not list you. Persuade a friend to go to that page and they should see you listed.
