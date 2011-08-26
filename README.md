@@ -27,6 +27,7 @@ Instructions
 You will need to adjust paths according to the location of your Eclipse workspace.
 
 4. Copy the Geolocation test page:
+
 ```
 cp DF11Mashup/src/pages/GeoTest.page* ~/Documents/workspace/Mashup/src/pages
 ```
