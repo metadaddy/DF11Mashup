@@ -45,9 +45,9 @@ Note that there are no slashes on the end of those directory names. If you add t
 10. In the browser, go to Setup | App Setup | Create | Apps, click 'Edit' next to the OAuth Consumer Playground app, scroll down, and click the 'Visible' box next to System Administrator. Now go to Setup | Administration Setup | Manage Users | Profiles, click on 'Edit' next to System Administrator, scroll down to Custom Tab Settings and set 'API Tester', 'Authorize' and 'OAuth Services' to 'Default On'. 'OAuth Consumer Playground' should now be available in the dropdown list of apps (top right).
 
 11. Select 'OAuth Consumer Playground' from apps list, click the 'OAuth Services' tab, click 'New' and enter the following data:
-* Service Name: SimpleGeo
-* Consumer Key: Key from https://simplegeo.com/tokens/
-* Consumer Secret: Secret from https://simplegeo.com/tokens/
+ * Service Name: SimpleGeo
+ * Consumer Key: Key from https://simplegeo.com/tokens/
+ * Consumer Secret: Secret from https://simplegeo.com/tokens/
 
 12. Go to Setup | Administration Setup | Security Controls | Remote Site Settings and add http://api.simplegeo.com as a new remote site.
 
@@ -76,8 +76,8 @@ Note that there are no slashes on the end of those directory names. If you add t
 22. Go to https://developers.facebook.com/apps and create a new Facebook app. Under 'Website', set Site URL to your site's URL - for me it was http://sgtest-developer-edition.na12.force.com/
 
 23. Back in your DE org, click the 'Facebook Apps' tab, Click 'New' and enter the following data:
-* FacebookApp Name: Mashup
-* clientID: App ID from your app's settings in Facebook
-* clientSecret: App Secret from your app's settings in Facebook
+ * FacebookApp Name: Mashup
+ * clientID: App ID from your app's settings in Facebook
+ * clientSecret: App Secret from your app's settings in Facebook
 
 23. Go to your site URL (e.g. http://sgtest-developer-edition.na12.force.com/) and you should be prompted to authorize your new app. Do so and you should see a sample page showing your Facebook user info, profile picture, 'Like' button etc. Change the URL to e.g. http://sgtest-developer-edition.na12.force.com/SimpleMashup and you should see a list of nearby users. It will likely have a single entry. Now go to e.g. http://sgtest-developer-edition.na12.force.com/Mashup and you should see the full 'Nearby Users' UI, with (probably) an empty list of users, since it does not list you. Persuade a friend to go to that page and they should see you listed.
