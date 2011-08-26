@@ -26,7 +26,7 @@ Instructions
 
         cp DF11Mashup/src/staticresources/* ~/Documents/workspace/Mashup/src/staticresources
         
-  You will need to adjust paths according to the location of your Eclipse workspace.
+    You will need to adjust paths according to the location of your Eclipse workspace.
 
 * Copy the Geolocation test page:
 
@@ -43,7 +43,7 @@ Instructions
         cd sfdc-oauth-playground
         cp -r applications classes layouts objects pages tabs ~/Documents/workspace/Mashup/src/
         
-  Note that there are no slashes on the end of those directory names. If you add the slashes, it copies the contents of the directories to the src directory, which you don't want!
+    Note that there are no slashes on the end of those directory names. If you add the slashes, it copies the contents of the directories to the src directory, which you don't want!
 
 * In Eclipse, right click your project in the project explorer and click 'Refresh'.
 
