@@ -23,10 +23,12 @@ Instructions
 2. Create a new Force.com project in the [Force.com IDE](http://wiki.developerforce.com/index.php/Force.com_IDE) using your new org's credentials. In the 'Choose Initial Project Contents' dialog, select 'Selected metadata components', hit 'Choose...' and select ALL of the components in the next page. This will give you a complete project directory tree.
 
 3. Copy all static resources from DF11Mashup to the staticresources project sub-directory. For example:
+
     cp DF11Mashup/src/staticresources/* ~/Documents/workspace/Mashup/src/staticresources
 You will need to adjust paths according to the location of your Eclipse workspace.
 
 4. Copy the Geolocation test page:
+
     cp DF11Mashup/src/pages/GeoTest.page* ~/Documents/workspace/Mashup/src/pages
     
 5. In Eclipse, right click your project in the project explorer and click 'Refresh'. This causes Eclipse to scan the project directory tree for changes, and the plugin syncs changes to Force.com. This is the easiest way to push multiple changes to Force.com in one operation - we'll be using this technique several times in these instructions.
@@ -36,6 +38,7 @@ You will need to adjust paths according to the location of your Eclipse workspac
 7. [Sign up for a SimpleGeo account](https://simplegeo.com/signup/). Go to the [SimpleGeo Layers page](https://simplegeo.com/layers/) and add a new layer called com.force.df11.mashup.
 
 8. Now copy the contents of sfdc-oauth-playground to the Eclipse project:
+
     cd sfdc-oauth-playground
     cp -r applications classes layouts objects pages tabs ~/Documents/workspace/Mashup/src/
 Note that there are no slashes on the end of those directory names. If you add the slashes, it copies the contents of the directories to the src directory, which you don't want!
@@ -54,6 +57,7 @@ Note that there are no slashes on the end of those directory names. If you add t
 13. Click the API Tester tab, enter http://api.simplegeo.com/1.0/context/ip.json as the URL and click 'Send'. You should see a JSON representation of your IP address' location.
 
 14. Now copy the contents of Force.com-Toolkit-for-SimpleGeo to the Eclipse project:
+
     cd Force.com-Toolkit-for-SimpleGeo
     cp -r classes pages ~/Documents/workspace/Mashup/src/
     
@@ -62,6 +66,7 @@ Note that there are no slashes on the end of those directory names. If you add t
 16. Go to the SimpleGeo test page. On my na12 DE org it is located at https://c.na12.visual.force.com/apex/SimpleGeoTest. You may be prompted again by your browser to share your location with the page (depending on your browser and whether you chose to always share your location). This time you should see your latitude and longitude and address.
 
 17. Now copy the contents of Force.com-Toolkit-for-Facebook to the Eclipse project:
+
     cd Force.com-Toolkit-for-Facebook
     cp -r applications classes components objects pages staticresources tabs ~/Documents/workspace/Mashup/src
 
@@ -80,4 +85,4 @@ Note that there are no slashes on the end of those directory names. If you add t
  * clientID: App ID from your app's settings in Facebook
  * clientSecret: App Secret from your app's settings in Facebook
 
-23. Go to your site URL (e.g. http://sgtest-developer-edition.na12.force.com/) and you should be prompted to authorize your new app. Do so and you should see a sample page showing your Facebook user info, profile picture, 'Like' button etc. Change the URL to e.g. http://sgtest-developer-edition.na12.force.com/SimpleMashup and you should see a list of nearby users. It will likely have a single entry. Now go to e.g. http://sgtest-developer-edition.na12.force.com/Mashup and you should see the full 'Nearby Users' UI, with (probably) an empty list of users, since it does not list you. Persuade a friend to go to that page and they should see you listed.
+24. Go to your site URL (e.g. http://sgtest-developer-edition.na12.force.com/) and you should be prompted to authorize your new app. Do so and you should see a sample page showing your Facebook user info, profile picture, 'Like' button etc. Change the URL to e.g. http://sgtest-developer-edition.na12.force.com/SimpleMashup and you should see a list of nearby users. It will likely have a single entry. Now go to e.g. http://sgtest-developer-edition.na12.force.com/Mashup and you should see the full 'Nearby Users' UI, with (probably) an empty list of users, since it does not list you. Persuade a friend to go to that page and they should see you listed.
