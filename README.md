@@ -18,19 +18,19 @@ I'll also post the slides here after my session.
 Instructions
 ------------
 
-1. Create a new, clean Developer Edition org (http://developer.force.com/join).
+* Create a new, clean Developer Edition org (http://developer.force.com/join).
 
-2. Create a new Force.com project in the [Force.com IDE](http://wiki.developerforce.com/index.php/Force.com_IDE) using your new org's credentials. In the 'Choose Initial Project Contents' dialog, select 'Selected metadata components', hit 'Choose...' and select ALL of the components in the next page. This will give you a complete project directory tree.
+* Create a new Force.com project in the [Force.com IDE](http://wiki.developerforce.com/index.php/Force.com_IDE) using your new org's credentials. In the 'Choose Initial Project Contents' dialog, select 'Selected metadata components', hit 'Choose...' and select ALL of the components in the next page. This will give you a complete project directory tree.
 
-3. Copy all static resources from DF11Mashup to the staticresources project sub-directory. For example:
-        cp DF11Mashup/src/staticresources/* ~/Documents/workspace/Mashup/src/staticresources
+* Copy all static resources from DF11Mashup to the staticresources project sub-directory. For example:
+
+    cp DF11Mashup/src/staticresources/* ~/Documents/workspace/Mashup/src/staticresources
 You will need to adjust paths according to the location of your Eclipse workspace.
 
-4. Copy the Geolocation test page:
+* Copy the Geolocation test page:
 
-```
-cp DF11Mashup/src/pages/GeoTest.page* ~/Documents/workspace/Mashup/src/pages
-```
+        cp DF11Mashup/src/pages/GeoTest.page* ~/Documents/workspace/Mashup/src/pages
+
     
 5. In Eclipse, right click your project in the project explorer and click 'Refresh'. This causes Eclipse to scan the project directory tree for changes, and the plugin syncs changes to Force.com. This is the easiest way to push multiple changes to Force.com in one operation - we'll be using this technique several times in these instructions.
     
