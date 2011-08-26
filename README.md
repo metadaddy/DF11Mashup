@@ -9,9 +9,9 @@ https://dreamevent.my.salesforce.com/a0930000009YIP3
 Prerequisites
 -------------
 
-https://github.com/metadaddy-sfdc/sfdc-oauth-playground
-https://github.com/metadaddy-sfdc/Force.com-Toolkit-for-SimpleGeo
-https://github.com/metadaddy-sfdc/Force.com-Toolkit-for-Facebook
+* https://github.com/metadaddy-sfdc/sfdc-oauth-playground
+* https://github.com/metadaddy-sfdc/Force.com-Toolkit-for-SimpleGeo
+* https://github.com/metadaddy-sfdc/Force.com-Toolkit-for-Facebook
 
 I'll also post the slides here after my session.
 
