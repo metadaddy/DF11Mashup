@@ -30,12 +30,16 @@ global with sharing class MashupController extends FacebookLoginController {
     
     // Returns JSON string with user info
     public static String getFacebookUser() {
-        return FacebookObject.doAPICallRaw('me', null, null);
+    		FacebookObject fbo = new FacebookObject(FacebookToken.getAccessToken());
+    		
+        return fbo.doAPICallRaw('me', null, null);
     }
     
     // Returns JSON string with friend list
     public static String getFacebookFriends() {
-        return FacebookObject.doAPICallRaw('me', 'friends', null);
+    		FacebookObject fbo = new FacebookObject(FacebookToken.getAccessToken());
+
+        return fbo.doAPICallRaw('me', 'friends', null);
     }
     
     // Given a FB user id and name, and latitude/longitude, push that up to 

@@ -11,7 +11,9 @@ global with sharing class SimpleMashupController extends FacebookLoginController
     
     // Returns JSON string with user info
     public static String getFacebookUser() {
-        return FacebookObject.doAPICallRaw('me', null, null);
+    		FacebookObject fbo = new FacebookObject(FacebookToken.getAccessToken());
+
+        return fbo.doAPICallRaw('me', null, null);
     }
     
     // Given a FB user id and name, and latitude/longitude, push that up to 
